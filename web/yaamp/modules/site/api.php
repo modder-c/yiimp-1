@@ -15,11 +15,12 @@ request:
 result:
 <pre class="main-left-box" style='padding: 3px; font-size: .8em; background-color: #ffffee; font-family: monospace;'>
 {
-	"unsold": 0.00050362,
-	"balance": 0.00000000,
-	"unpaid": 0.00050362,
-	"paid24h": 0.00000000,
-	"total": 0.00050362
+        "currency": "IFC",
+	"unsold": 8584.62238943426,
+	"balance": 2172.90325027,
+	"unpaid": 10757.52563970,
+	"paid24h": 118953.22180769,
+	"total": 129710.74744739
 }
 </pre>
 
@@ -30,19 +31,20 @@ request:
 result:
 <pre class="main-left-box" style='padding: 3px; font-size: .8em; background-color: #ffffee; font-family: monospace;'>
 {
-	"unsold": 0.00050362,
-	"balance": 0.00000000,
-	"unpaid": 0.00050362,
-	"paid24h": 0.00000000,
-	"total": 0.00050362,
+        "currency": "IFC",
+	"unsold": 8584.62238943426,
+	"balance": 2172.90325027,
+	"unpaid": 10757.52563970,
+	"paid24h": 118953.22180769,
+	"total": 129710.74744739,
 	"miners":[{
-		"version": "ccminer\/1.8.2",
-		"password": "d=96",
+		"version": "ccminer\/4.10.0",
+		"password": "123",
 		"ID": "",
-		"algo": "decred",
-		"difficulty": 96,
-		"subscribe": 1,
-		"accepted": 82463372.083,
+		"algo": "scrypt",
+		"difficulty": 54630,
+		"subscribe": 0,
+		"accepted": 109984734.533,
 		"rejected": 0
 	}]
 <?php if (YAAMP_API_PAYOUTS) : ?>
@@ -67,18 +69,18 @@ request:
 result:
 <pre class="main-left-box" style='padding: 3px; font-size: .8em; background-color: #ffffee; font-family: monospace;'>
 {
-	"x11": {
-		"name": "x11",
-		"port": 3533,
-		"coins": 10,
-		"fees": 1,
-		"hashrate": 269473938,
-		"workers": 5,
-		"estimate_current": "0.00053653",
-		"estimate_last24h": "0.00036408",
-		"actual_last24h": "0.00035620",
-		"hashrate_last24h": 269473000,
-		"rental_current": "3.61922463"
+	"scrypt": {
+		"name": "scrypt",
+		"port": 9391,
+		"coins": 2,
+		"fees": 2,
+		"hashrate": 3454313881,
+		"workers": 29,
+		"estimate_current": "0.00000000",
+		"estimate_last24h": "0.00000000",
+		"actual_last24h": "0.00000",
+                "mbtc_mh_factor":1,
+		"hashrate_last24h": 3434413815.3459
 	},
 
 	...
@@ -93,18 +95,33 @@ request:
 result:
 <pre class="main-left-box" style='padding: 3px; font-size: .8em; background-color: #ffffee; font-family: monospace;'>
 {
-	"BTX": {
-		"algo": "bitcore",
-		"port": 3556,
-		"name": "BitCore",
-		"height": 18944,
-		"workers": 181,
-		"shares": 392,
-		"hashrate": 7267227499,
-		"24h_blocks": 329,
-		"24h_btc": 0.54471295,
-		"lastblock": 18945,
-		"timesincelast": 67
+	"DOGM": {
+		"algo": "scrypt",
+		"port": 9391,
+		"name": "Dogmcoin",
+		"height": 4744432,
+                "difficulty":890,
+                "minimumPayment":1,
+		"workers": 0,    
+		"shares": 1,
+		"hashrate": 3195417287.938113,   
+		"24h_blocks": 72,
+		"lastblock": 4744426,
+		"timesincelast": 390
+        },
+        "IFC": {
+		"algo": "scrypt",
+		"port": 9391,
+		"name": "Infinitecoin",
+		"height": 9288841,
+                "difficulty":245,
+                "minimumPayment":1,
+		"workers": 29,
+		"shares": 151,
+		"hashrate": 3195417288,
+		"24h_blocks": 358,
+		"lastblock": 9288835,
+		"timesincelast": 145
 	},
 
 	...
