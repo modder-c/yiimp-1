@@ -162,14 +162,41 @@ class ApiController extends CommonController
 				$btcmhd = yaamp_profitability($coin);
 				$btcmhd = mbitcoinvaluetoa($btcmhd);
 
+                                $min_ttf = $coin->network_ttf > 0 ? min($coin->actual_ttf, $coin->network_ttf) : $coin->actual_ttf;
+                                $network_hash = $coin->difficulty * 0x100000000 / ($min_ttf ? $min_ttf : 60);
+                                $min_payout = max(floatval(YAAMP_PAYMENTS_MINI), floatval($coin->payout_min));
+                                $pool_hash_pow = yaamp_pool_rate_pow($coin->algo);
+                                $pool_hash = yaamp_coin_rate($coin->id);
+
+                                if($coin->auxpow && $coin->auto_ready)
 				$data[$symbol] = array(
 					'algo' => $coin->algo,
 					'port' => getAlgoPort($coin->algo),
 					'name' => $coin->name,
 					'height' => (int) $coin->block_height,
+                                        'difficulty' => round($coin->difficulty),
+                                        'minimumPayment' => $min_payout,
 					'workers' => $workers,
 					'shares' =>  (int) arraySafeVal($shares,'shares'),
-					'hashrate' => round($factor * $algo_hashrate),
+					'hashrate' => $pool_hash_pow,
+					'estimate' => $btcmhd,
+					//'percent' => round($factor * 100, 1),
+					'24h_blocks' => (int) arraySafeVal($res24h,'a'),
+					'24h_btc' => round(arraySafeVal($res24h,'b',0), 8),
+					'lastblock' => $lastblock,
+					'timesincelast' => $timesincelast,
+				);
+                                else
+                                $data[$symbol] = array(
+					'algo' => $coin->algo,
+					'port' => getAlgoPort($coin->algo),
+					'name' => $coin->name,
+					'height' => (int) $coin->block_height,
+                                        'difficulty' => round($coin->difficulty),
+                                        'minimumPayment' => $min_payout,
+					'workers' => $workers,
+					'shares' =>  (int) arraySafeVal($shares,'shares'),
+					'hashrate' => round($factor * $pool_hash),
 					'estimate' => $btcmhd,
 					//'percent' => round($factor * 100, 1),
 					'24h_blocks' => (int) arraySafeVal($res24h,'a'),
