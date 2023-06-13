@@ -65,7 +65,7 @@ hr
 .page .headermenu
 {
 	position: fixed;
-	right: 1px;
+	right: 0px;
 	left: 0px;
 	top: 0px;
 	color: #ccc;
