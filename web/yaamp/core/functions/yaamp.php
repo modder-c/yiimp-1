@@ -237,7 +237,7 @@ function getAlgoPort($algo)
 		'sha256t'	=> 3339,
 		'sha256q'	=> 3337,
 		'lbry'		=> 3334,
-		'scrypt'	=> 3433,
+		'scrypt'	=> 9391,
 		'timetravel'	=> 3555,
 		'bitcore'	=> 3556,
 		'exosis'	=> 3557,
