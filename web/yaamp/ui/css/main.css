@@ -7,25 +7,30 @@
 
 body
 {
-	font: normal 10pt Arial,Helvetica,sans-serif;
-	background-color: white;
-	color: #444;
+	color: #fff;
 	text-align: left;
 	margin: 0;
 	padding: 0;
 	scroll: no;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 10pt;
+	background-color: #32373c;
+	background-image: url(/images/base/background.png);
+        background-position: center;
+	background-repeat: no-repeat;
+        background-attachment: fixed;
 }
 
 a, a:visited
 {
-	color: #306495;
+	color: #ffffff;
 	background: inherit;
 	text-decoration: none;
 }
 
 a:hover
 {
-	color: #73471B;
+	color: #4ca6b3;
 	background: inherit;
 	text-decoration: underline;
 }
@@ -60,18 +65,12 @@ hr
 .page .headermenu
 {
 	position: fixed;
-	right: 10px;
+	right: 1px;
+	left: 0px;
 	top: 0px;
 	color: #ccc;
 	z-index: 10;
 	font-size: 1.0em;
-}
-
-.page .headermenu img
-{
-	border-radius: 5px;
-	padding: 2px 0 0 0; 
-	height: 26px;
 }
 
 .page .headermenu a
@@ -88,15 +87,23 @@ hr
 	top: 0px;
 	right: 0px;
 	left: 0px;
-	z-index: 8;
+	z-index: 20;
 	height: 40px;
-	color: #aaa;
+	color: #fff;
 
 	background-image: url(/images/base/top_header.png);
 	background-repeat: repeat-x;
 	
 	-webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, .25);
 	box-shadow: 0 2px 3px rgba(0, 0, 0, .25);
+}
+
+.page .tabmenu-out img
+{
+	position: fixed;
+	top: 4px;
+	left: 30px;
+	height: 32px;
 }
 
 .page .tabmenu-inner
@@ -110,15 +117,14 @@ hr
 {
 	text-decoration: none;
 	padding: 10px;
-	color: #aaa;
+	color: #fff;
 }
 
 .page .tabmenu-inner .selected
 {
-	color: #eee;
-	border: 1px solid #181818;
+	color: #4ca6b3;
 	background-image: url(/images/base/top_header_selected.png);
-	background-repeat: repeat-x;
+	background-repeat: no-repeat;
 }
 
 /* ---------------------------------------------- */
@@ -149,8 +155,8 @@ hr
 	font-weight: bold;
 	text-align: center;
 	padding: 10px;
-	background-color: #ccc;
-	color: #333;
+	background-color: #41464b;
+	color: #fff;
 }
 
 .page .footer p
@@ -163,20 +169,22 @@ hr
 
 .main-left-box
 {
-	border: 1px solid #e8e8e8;
+	border: 1px solid #7d7d7d;
 	border-radius: 5px;
 }
 
 .main-left-title
 {
 	padding: 8px;
-	background-color: #e5e5e5;
+	background-color: #41464b;
 	font-weight: bold;
+	color: #fff;	
 }
 
 .main-left-inner
 {
 	padding: 5px;
+	color: #fff;
 }
 
 .main-left-inner ul
@@ -223,5 +231,23 @@ hr
 .blue
 {
 	color: blue;
+}
+
+.social-icons {
+  text-align: center;
+  }  
+.social-icons li {
+  display:inline-block;
+  list-style-type:none;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  }
+.social-icons li a {
+  border-bottom: none;
+  }
+.social-icons li img {
+  width:70px;
+  height:70px;
+  margin-right: 20px;
 }
 
