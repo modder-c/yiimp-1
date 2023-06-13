@@ -104,6 +104,14 @@ $payout_freq = (YAAMP_PAYMENTS_FREQ / 3600)." hours";
 <a class="twitter-timeline" href="https://twitter.com/hashtag/YAAMP" data-widget-id="617405893039292417" data-chrome="transparent" height="450px" data-tweet-limit="3" data-aria-polite="polite">Tweets about #YAAMP</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
+<ul class="social-icons">
+    <li><a href="https://telegram.org"><img src='/images/telegram.png' /></a></li>
+    <li><a href="https://discord.com"><img src='/images/discord.png' /></a></li>
+    <li><a href="https://twitter.com"><img src='/images/Twitter.png' /></a></li>
+    <li><a href="mailto:"><img src='/images/email.png' /></a></li>
+    <li><a href="https://github.com"><img src='/images/Github.png' /></a></li>
+</ul>	
+	
 </td><td valign=top>
 
 <!--  -->
