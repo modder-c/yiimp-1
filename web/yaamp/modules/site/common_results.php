@@ -127,7 +127,7 @@ foreach($algos as $item)
 	$ts = $isup ? datetoa2($stratum->started) : '';
 
 	echo '<tr class="ssrow">';
-	echo '<tr style="background-color: #41464b">';
+	echo '<td style="background-color: #41464b"><b>';
 	echo CHtml::link($algo, '/site/gomining?algo='.$algo);
 	echo '</b></td>';
 	echo '<td align="left" style="font-size: .8em;" data="'.$ts.'">'.$isup.'&nbsp;'.$time.'</td>';
