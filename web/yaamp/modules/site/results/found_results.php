@@ -12,7 +12,7 @@ $showrental = (bool) YAAMP_RENTAL;
 $algo = user()->getState('yaamp-algo');
 
 $count = getparam('count');
-$count = $count? $count: 50;
+$count = $count? $count: 100;
 
 WriteBoxHeader("Last $count Blocks ($algo)");
 
