@@ -49,10 +49,10 @@ td.right { text-align: right; }
 <td></td>
 <th>Name</th>
 <th align="right">Amount</th>
+<th align="right">Merged</th>	
 <th align="right">Difficulty</th>
 <th align="right">Block</th>
-<th align="right">Time</th>
-<th align="right">Merged</th>	
+<th align="right">Time</th>	
 <th align="right">Status</th>
 </tr>
 </thead>
@@ -96,17 +96,17 @@ foreach($db_blocks as $db_block)
 	echo '<td width="18px"><img width="16px" src="'.$coin->image.'"></td>';
 	echo '<td class="row"><b class="row">'.$link.'</b> ('.$db_block->algo.')'.$flags.'</td>';
 	echo '<td class="row right"><b>'.$reward.' '.$coin->symbol_show.'</b></td>';
-	echo '<td class="row right" title="found '.$db_block->difficulty_user.'">'.$difficulty.'</td>';
-	echo '<td class="row right">'.$height.'</td>';
-	echo '<td class="row right">'.$d.' ago</td>';
 
-        echo '<td class="row right">';
+	echo '<td class="row right">';
         if($coin->auxpow && $coin->auto_ready) 
 	    echo '<span class="auxpow" title="Block was found by auxpow">AUXPOW</span>';
         else
             echo '<span class="pow" title="Block was found by pow">POW</span>';
         echo "</td>";
 	
+	echo '<td class="row right" title="found '.$db_block->difficulty_user.'">'.$difficulty.'</td>';
+	echo '<td class="row right">'.$height.'</td>';
+	echo '<td class="row right">'.$d.' ago</td>';
 	echo '<td class="row right">';
 
 	if($db_block->category == 'orphan')
