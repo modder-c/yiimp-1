@@ -122,11 +122,12 @@ foreach($algos as $item)
 		echo "<tr style='cursor: pointer' class='ssrow' onclick='javascript:select_algo(\"$algo\")'>";
 
 	echo "<td><b>$algo</b></td>";
-	echo "<td align=right style='font-size: .8em;'>$port</td>";
-	echo "<td align=right style='font-size: .8em;'>".($coins==1 ? $coinsym : $coins)."</td>";
-	echo "<td align=right style='font-size: .8em;'>$workers</td>";
-	echo '<td align="right" style="font-size: .8em;" data="'.$hashrate.'">'.$hashrate_sfx.'</td>';
-	echo "<td align=right style='font-size: .8em;'>{$fees}%</td>";
+        echo "<td align=center style='font-size: .8em; background-color: #41464b;'></td>";
+        echo "<td align=center style='font-size: .8em; background-color: #41464b;'></td>";
+        echo "<td align=center style='font-size: .8em; background-color: #41464b;'></td>";
+        echo "<td align=center style='font-size: .8em; background-color: #41464b;'></td>";
+        echo "<td align=center style='font-size: .8em; background-color: #41464b;'></td>";
+        echo "<td align=center style='font-size: .8em; background-color: #41464b;'></td>";
 
 	if($algo == $best_algo)
 		echo '<td class="estimate" align="right" style="font-size: .8em;" title="normalized '.$norm.'"><b>'.$price.'*</b></td>';
