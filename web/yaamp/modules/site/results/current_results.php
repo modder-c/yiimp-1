@@ -22,6 +22,7 @@ echo <<<END
 <th data-sorter="numeric" align="right">Coins</th>
 <th data-sorter="numeric" align="right">Miners</th>
 <th data-sorter="numeric" align="right">Hashrate</th>
+<th data-sorter="numeric" align="right">Network</th>	
 <th data-sorter="currency" align="right">Fees**</th>
 <th data-sorter="currency" class="estimate" align="right">Current<br>Estimate</th>
 <!--<th data-sorter="currency" >Norm</th>-->
@@ -178,6 +179,34 @@ foreach($algos as $item)
         else
             echo "<td align='right' style='font-size: .8em;'>$pool_hash_sfx</td>";
 
+	    $network_hash = controller()
+                ->memcache
+                ->get("yiimp-nethashrate-{$coin->symbol}");
+            if (!$network_hash)
+            {
+                $remote = new WalletRPC($coin);
+                if ($remote) $info = $remote->getmininginfo();
+                if (isset($info['networkhashps']))
+                {
+                    $network_hash = $info['networkhashps'];
+                    controller()
+                        ->memcache
+                        ->set("yiimp-nethashrate-{$coin->symbol}", $info['networkhashps'], 60);
+                }
+                else if (isset($info['netmhashps']))
+                {
+                    $network_hash = floatval($info['netmhashps']) * 1e6;
+                    controller()
+                        ->memcache
+                        ->set("yiimp-nethashrate-{$coin->symbol}", $network_hash, 60);
+                }
+		else
+		{
+		    $network_hash = $coin->difficulty * 0x100000000 / ($min_ttf? $min_ttf: 60);
+		}
+            }
+            $network_hash = $network_hash ? Itoa2($network_hash) . 'h/s' : '';
+            echo "<td align='right' style='font-size: .8em;' data='$pool_hash'>$network_hash</td>";	
             echo "<td align='right' style='font-size: .8em;'>{$fees}%</td>";
         $btcmhd = yaamp_profitability($coin);
         $btcmhd = mbitcoinvaluetoa($btcmhd);
