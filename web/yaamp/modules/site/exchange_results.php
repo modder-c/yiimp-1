@@ -99,7 +99,7 @@ foreach($exchanges as $exchange)
 	$marketurl = getMarketUrl($coin, $exchange->market);
 
 	if($exchange->status == 'waiting')
-		echo "<tr style='background-color: #e0d3e8;'>";
+		echo "<tr style='background-color: #41464b;'>";
 	else
 		echo "<tr class='ssrow'>";
 

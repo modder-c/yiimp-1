@@ -9,11 +9,11 @@
 <p><b>Wallet Status</b></p>
 
 request:
-<p class="main-left-box" style='padding: 3px; font-size: .8em; background-color: #ffffee; font-family: monospace;'>
+<p class="main-left-box" style='padding: 3px; font-size: .8em; background-color: #41464b; font-family: monospace;'>
 	http://<?=YAAMP_API_URL?>/api/wallet?address=<b>WALLET_ADDRESS</b></p>
 
 result:
-<pre class="main-left-box" style='padding: 3px; font-size: .8em; background-color: #ffffee; font-family: monospace;'>
+<pre class="main-left-box" style='padding: 3px; font-size: .8em; background-color: #41464b; font-family: monospace;'>
 {
         "currency": "IFC",
 	"unsold": 8584.62238943426,
@@ -25,11 +25,11 @@ result:
 </pre>
 
 request:
-<p class="main-left-box" style='padding: 3px; font-size: .8em; background-color: #ffffee; font-family: monospace;'>
+<p class="main-left-box" style='padding: 3px; font-size: .8em; background-color: #41464b; font-family: monospace;'>
         http://<?=YAAMP_API_URL?>/api/walletEx?address=<b>WALLET_ADDRESS</b></p>
 
 result:
-<pre class="main-left-box" style='padding: 3px; font-size: .8em; background-color: #ffffee; font-family: monospace;'>
+<pre class="main-left-box" style='padding: 3px; font-size: .8em; background-color: #41464b; font-family: monospace;'>
 {
         "currency": "IFC",
 	"unsold": 8584.62238943426,
@@ -63,11 +63,11 @@ if (YAAMP_API_PAYOUTS)
 <p><b>Pool Status</b></p>
 
 request:
-<p class="main-left-box" style='padding: 3px; font-size: .8em; background-color: #ffffee; font-family: monospace;'>
+<p class="main-left-box" style='padding: 3px; font-size: .8em; background-color: #41464b; font-family: monospace;'>
 	http://<?=YAAMP_API_URL?>/api/status</p>
 
 result:
-<pre class="main-left-box" style='padding: 3px; font-size: .8em; background-color: #ffffee; font-family: monospace;'>
+<pre class="main-left-box" style='padding: 3px; font-size: .8em; background-color: #41464b; font-family: monospace;'>
 {
 	"scrypt": {
 		"name": "scrypt",
@@ -89,11 +89,11 @@ result:
 
 
 request:
-<p class="main-left-box" style='padding: 3px; font-size: .8em; background-color: #ffffee; font-family: monospace;'>
+<p class="main-left-box" style='padding: 3px; font-size: .8em; background-color: #41464b; font-family: monospace;'>
 	http://<?=YAAMP_API_URL?>/api/currencies</p>
 
 result:
-<pre class="main-left-box" style='padding: 3px; font-size: .8em; background-color: #ffffee; font-family: monospace;'>
+<pre class="main-left-box" style='padding: 3px; font-size: .8em; background-color: #41464b; font-family: monospace;'>
 {
 	"DOGM": {
 		"algo": "scrypt",

@@ -168,7 +168,7 @@ function graph_init_price(data)
 			borderWidth: 1,
 			shadowWidth: 0,
 			shadowDepth: 0,
-			background: '#ffffff'
+			background: '#41464b'
 		},
 
 	});
@@ -217,7 +217,7 @@ function pool_hashrate_graph_init(data)
 			borderWidth: 1,
 			shadowWidth: 0,
 			shadowDepth: 0,
-			background: '#ffffff'
+			background: '#41464b'
 		},
 
 		highlighter:
