@@ -6,13 +6,13 @@ $symbol = getparam('symbol');
 $coin = null;
 
 if($symbol == 'all')
-	$users = getdbolist('db_accounts', "balance>.001 OR id IN (SELECT DISTINCT userid FROM workers) ORDER BY balance DESC");
+	$users = getdbolist('db_accounts', "balance>=0 OR id IN (SELECT DISTINCT userid FROM workers) ORDER BY balance DESC");
 else
 {
 	$coin = getdbosql('db_coins', "symbol=:symbol", array(':symbol'=>$symbol));
 	if(!$coin) return;
 
-	$users = getdbolist('db_accounts', "coinid={$coin->id} AND (balance>.001 OR id IN (SELECT DISTINCT userid FROM workers)) ORDER BY balance DESC");
+	$users = getdbolist('db_accounts', "coinid={$coin->id} AND (balance>=0 OR id IN (SELECT DISTINCT userid FROM workers)) ORDER BY balance DESC");
 }
 
 echo <<<end
