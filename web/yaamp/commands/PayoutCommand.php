@@ -298,7 +298,15 @@ class PayoutCommand extends CConsoleCommand
 		if (!$coin || !$coin->installed)
 			die("Invalid payout coin id\n");
 
-		$relayfee = 0.0001;
+		// Determine the relay fee based on the coins symbol
+		$coin_symbol = $coin->symbol;  
+                if ($coin_symbol == 'IFC') {  
+                    $relayfee = 1;  
+                } elseif ($coin_symbol == 'DOGM' || $coin_symbol == 'DOGE') {  
+                    $relayfee = 0.01;  
+                } else {  
+                    $relayfee = 0.0001;  
+                }   
 
 		$dests = array(); $total = 0.;
 		foreach ($payouts as $payout) {
