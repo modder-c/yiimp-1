@@ -597,7 +597,7 @@ foreach($db_blocks as $db_block)
 		$reward = bitcoinvaluetoa($db_block->amount);
 
 		$algo_color = getAlgoColors($db_block->algo);
-		echo '<tr style="background-color: '.$algo_color.';">';
+		echo '<tr style="background-color: #41464b">';
 		echo '<td width="18px"><img width="16px" src="/images/btc.png"></td>';
 		echo '<td><b>Rental</b> ('.$db_block->algo.')</td>';
 		echo '<td align="right" style="font-size: .8em"><b>$reward BTC</b></td>';
@@ -622,7 +622,7 @@ foreach($db_blocks as $db_block)
 	$diff = Itoa2($db_block->difficulty, 3);
 
 	$algo_color = getAlgoColors($coin->algo);
-	echo '<tr style="background-color: '.$algo_color.';">';
+	echo '<tr style="background-color: #41464b">';
 	echo '<td width="18px"><img width="16px" src="'.$coin->image.'"></td>';
 	$flags = $db_block->segwit ? '&nbsp;<img src="/images/ui/segwit.png" height="8px" valign="center" title="segwit">' : '';
 	echo '<td><b><a href="/site/coin?id='.$coin->id.'">'.$coin->name.'</a></b>'.$flags.'</td>';
