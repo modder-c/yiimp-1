@@ -185,6 +185,8 @@ class ApiController extends CommonController
 					'24h_btc' => round(arraySafeVal($res24h,'b',0), 8),
 					'lastblock' => $lastblock,
 					'timesincelast' => $timesincelast,
+					'auxpow' => 1,
+					'merged_with' => ["IFC"],
 				);
                                 else
                                 $data[$symbol] = array(
@@ -203,6 +205,8 @@ class ApiController extends CommonController
 					'24h_btc' => round(arraySafeVal($res24h,'b',0), 8),
 					'lastblock' => $lastblock,
 					'timesincelast' => $timesincelast,
+					'auxpow' => 0,
+					'merged_with' => ["DOGM","DOGE"],
 				);
 
 				if (!empty($coin->symbol2))
