@@ -250,7 +250,8 @@ function graph_init_1(data)
 		grid: {
 			borderWidth: 1,
 			shadowWidth: 2,
-			shadowDepth: 2
+			shadowDepth: 2,
+	                background: '#595959'
 		},
 
 	});
@@ -286,7 +287,8 @@ function graph_init_2(data)
 		grid: {
 			borderWidth: 1,
 			shadowWidth: 2,
-			shadowDepth: 2
+			shadowDepth: 2,
+	                background: '#595959'
 		},
 
 	});
@@ -322,7 +324,8 @@ function graph_init_3(data)
 		grid: {
 			borderWidth: 1,
 			shadowWidth: 2,
-			shadowDepth: 2
+			shadowDepth: 2,
+	                background: '#595959'
 		},
 
 	});
@@ -363,7 +366,8 @@ function graph_init_4(data)
 		grid: {
 			borderWidth: 1,
 			shadowWidth: 2,
-			shadowDepth: 2
+			shadowDepth: 2,
+	                background: '#595959'
 		},
 
 	});
@@ -399,7 +403,8 @@ function graph_init_5(data)
 		grid: {
 			borderWidth: 1,
 			shadowWidth: 2,
-			shadowDepth: 2
+			shadowDepth: 2,
+	                background: '#595959'
 		},
 
 	});
@@ -435,7 +440,8 @@ function graph_init_6(data)
 		grid: {
 			borderWidth: 1,
 			shadowWidth: 2,
-			shadowDepth: 2
+			shadowDepth: 2,
+	                background: '#595959'
 		},
 
 	});
@@ -476,7 +482,8 @@ function graph_init_7(data)
 		grid: {
 			borderWidth: 1,
 			shadowWidth: 2,
-			shadowDepth: 2
+			shadowDepth: 2,
+	                background: '#595959'
 		},
 
 	});
@@ -512,7 +519,8 @@ function graph_init_8(data)
 		grid: {
 			borderWidth: 1,
 			shadowWidth: 2,
-			shadowDepth: 2
+			shadowDepth: 2,
+	                background: '#595959'
 		},
 
 	});
@@ -548,7 +556,8 @@ function graph_init_9(data)
 		grid: {
 			borderWidth: 1,
 			shadowWidth: 2,
-			shadowDepth: 2
+			shadowDepth: 2,
+	                background: '#595959'
 		},
 
 	});
