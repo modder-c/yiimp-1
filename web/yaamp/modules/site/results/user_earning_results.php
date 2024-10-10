@@ -13,7 +13,7 @@ $user = getuserparam(getparam('address'));
 if(!$user || $user->is_locked) return;
 
 $count = getparam('count');
-$count = $count? $count: 50;
+$count = $count? $count: 100;
 
 WriteBoxHeader("Last $count Earnings: $user->username");
 $earnings = getdbolist('db_earnings', "userid=$user->id order by create_time desc limit :count", array(':count'=>$count));
@@ -85,7 +85,7 @@ foreach($earnings as $earning)
 	echo '<tr class="ssrow">';
 	echo '<td width="18"><img width="16" src="'.$coin->image.'"></td>';
 	echo '<td><b>'.$blockUrl.'</b><span style="font-size: .8em;"> ('.$coin->algo.')</span></td>';
-	echo '<td align="right" style="font-size: .8em;"><b>'.$reward.' '.$coin->symbol_show.'</b></td>';
+	echo '<td align="right" style="font-size: .8em;"><b>'.$reward.'</b></td>';
 	echo '<td align="right" style="font-size: .8em;">'.$percent.'%</td>';
 	echo '<td align="right" style="font-size: .8em;">'.$value.'</td>';
 	echo '<td align="right" style="font-size: .8em;">'.$d.'&nbsp;ago</td>';
