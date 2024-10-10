@@ -129,7 +129,4 @@ Thanks to globalzon to have released the initial Yaamp source code.
 
 --
 
-You can support this project donating to tpruvot :
-
-BTC : 1Auhps1mHZQpoX4mCcVL8odU81VakZQ6dR
-
+Thanks to tpruvot to have released the initial Yiimp source code.
