@@ -32,6 +32,17 @@ function BackendBlockNew($coin, $db_block)
 			if ($amount <= 0) continue;
 		}
 
+                // Check if the coin symbol is either "IFC", "DOGM", or "DOGE"  
+                // These specific coins may require special handling to reduce dust amounts  
+                // Dust refers to small balances in blockchain transactions that can accumulate   
+                // due to frequent trading and pose a significant threat to blockchain performance  
+               if ($coin->symbol === 'IFC' || $coin->symbol === 'DOGM' || $coin->symbol === 'DOGE') {  
+                   // If the symbol matches, use the floor() function to round down the amount  
+                   // This ensures the amount is an integer without decimal places  
+                   // Reducing or eliminating dust amounts improves blockchain efficiency and performance  
+                   $amount = floor($amount);  
+                }
+		
 		$earning = new db_earnings;
 		$earning->userid = $user->id;
 		$earning->coinid = $coin->id;
