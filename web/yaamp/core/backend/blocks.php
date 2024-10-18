@@ -8,8 +8,6 @@ function BackendBlockNew($coin, $db_block)
 	if($db_block->category == 'stake' || $db_block->category == 'generated') return;
 
 	$sqlCond = "valid = 1";
-	if(!YAAMP_ALLOW_EXCHANGE) // only one coin mined
-		$sqlCond .= " AND coinid = ".intval($coin->id);
 
 	$total_hash_power = dboscalar("SELECT SUM(difficulty) FROM shares WHERE $sqlCond AND algo=:algo", array(':algo'=>$coin->algo));
 	if(!$total_hash_power) return;
@@ -22,8 +20,22 @@ function BackendBlockNew($coin, $db_block)
 		$hash_power = $item['total'];
 		if(!$hash_power) continue;
 
-		$user = getdbo('db_accounts', $item['userid']);
-		if(!$user) continue;
+                // If the coin symbol is 'DOGM', retrieve the user from the 'db_accountsdogm' table
+                if ($coin->symbol === 'DOGM') {         
+                $user = getdbo('db_accountsdogm', $item['userid']);  
+                } else {  
+                // If the coin symbol is 'DOGE', retrieve the user from the 'db_accountsdoge' table
+                if ($coin->symbol === 'DOGE') {  
+                $user = getdbo('db_accountsdoge', $item['userid']);  
+                } else { 
+                // Otherwise, retrieve the user from the 'db_accounts' table  
+                $user = getdbo('db_accounts', $item['userid']);  
+                }  
+  
+                // If the user is not found, skip the current loop iteration  
+                if (!$user) {  
+                continue;  
+                }  
 
 		$amount = $reward * $hash_power / $total_hash_power;
 		if(!$user->no_fees) $amount = take_yaamp_fee($amount, $coin->algo);
@@ -74,8 +86,6 @@ function BackendBlockNew($coin, $db_block)
 
 	$delay = time() - 5*60;
 	$sqlCond = "time < $delay";
-	if(!YAAMP_ALLOW_EXCHANGE) // only one coin mined
-		$sqlCond .= " AND coinid = ".intval($coin->id);
 
 	try {
 		dborun("DELETE FROM shares WHERE algo=:algo AND $sqlCond", array(':algo'=>$coin->algo));
