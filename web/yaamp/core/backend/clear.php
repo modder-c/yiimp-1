@@ -15,27 +15,31 @@ function BackendClearEarnings($coinid = NULL)
 	$list = getdbolist('db_earnings', "status=1 AND mature_time<$delay $sqlFilter");
 	foreach($list as $earning)
 	{
-		$user = getdbo('db_accounts', $earning->userid);
+		$coin = getdbo('db_coins', $earning->coinid);
+		if(!$coin)
+		{
+		    $earning->delete();
+		    continue;
+		}
+
+		if ($coin->symbol === 'DOGM') {  
+			$user = getdbo('db_accountsdogm', $earning->userid);  
+		} else { 
+		if ($coin->symbol === 'DOGE') {  
+			$user = getdbo('db_accountsdoge', $earning->userid);  
+		} else {  
+			$user = getdbo('db_accounts', $earning->userid);  
+		}  
+
 		if(!$user)
 		{
 			$earning->delete();
 			continue;
 		}
-
-		$coin = getdbo('db_coins', $earning->coinid);
-		if(!$coin)
-		{
-			$earning->delete();
-			continue;
-		}
-
+			
 		$earning->status = 2;		// cleared
 		$earning->price = $coin->price;
 		$earning->save();
-
-// 		$refcoin = getdbo('db_coins', $user->coinid);
-// 		if($refcoin && $refcoin->price<=0) continue;
-// 		$value = $earning->amount * $coin->price / ($refcoin? $refcoin->price: 1);
 
 		$value = yaamp_convert_amount_user($coin, $earning->amount, $user);
 
