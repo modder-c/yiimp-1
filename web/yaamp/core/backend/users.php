@@ -1,10 +1,17 @@
 <?php
 
-function BackendUsersUpdate()
+function BackendUsersUpdate($coin)
 {
 	$t1 = microtime(true);
 
-	$list = getdbolist('db_accounts', "coinid IS NULL OR IFNULL(coinsymbol,'') != ''");
+        if ($coin->symbol === 'DOGM') {  
+        $list = getdbolist('db_accountsdogm', "coinid IS NULL OR IFNULL(coinsymbol,'') != ''"); 
+        } else {  
+        if ($coin->symbol === 'DOGE') {  
+        $list = getdbolist('db_accountsdoge', "coinid IS NULL OR IFNULL(coinsymbol,'') != ''"); 
+        } else { 
+        $list = getdbolist('db_accounts', "coinid IS NULL OR IFNULL(coinsymbol,'') != ''"); 
+        } 
 	foreach($list as $user)
 	{
 		$old_usercoinid = $user->coinid;
