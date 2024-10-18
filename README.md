@@ -1,3 +1,13 @@
+#How to install Yiimp? Use the Yiimp installation script.
+
+- https://github.com/msy2008/yiimp_install_scrypt
+
+#The stratum code built into Yiimp will not be continuously developed. Do you plan to reinstall Yiimp after improving the stratum code? Please use the independently developed stratum code.
+
+- https://github.com/msy2008/stratum-full
+
+
+
 #yiimp - yaamp fork
 
 WARNINGS
