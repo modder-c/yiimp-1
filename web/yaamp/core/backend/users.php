@@ -6,8 +6,7 @@ function BackendUsersUpdate($coin)
 
         if ($coin->symbol === 'DOGM') {  
         $list = getdbolist('db_accountsdogm', "coinid IS NULL OR IFNULL(coinsymbol,'') != ''"); 
-        } else {  
-        if ($coin->symbol === 'DOGE') {  
+        } elseif ($coin->symbol === 'DOGE') { 
         $list = getdbolist('db_accountsdoge', "coinid IS NULL OR IFNULL(coinsymbol,'') != ''"); 
         } else { 
         $list = getdbolist('db_accounts', "coinid IS NULL OR IFNULL(coinsymbol,'') != ''"); 
