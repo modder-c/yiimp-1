@@ -6,7 +6,7 @@
 
 - https://github.com/msy2008/stratum-full
 
-##To implement automatic payment of AUXPOW coins, you need to create a table file in the database
+## This Yiimp code is already able to support automatic payment with AUXPOW coins!, you need to create a table file in the database
 
 - Enter MariaDB database
 ```
