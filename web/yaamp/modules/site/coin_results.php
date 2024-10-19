@@ -275,9 +275,9 @@ echo '</tbody></table>';
 // last week
 $list_since = arraySafeVal($_GET,'since',time()-(7*24*3600));
 
-$maxrows = (int) arraySafeVal($_GET,'rows', 5000);
-$maxrows = max($maxrows,  5000);
-$maxrows = min($maxrows, 20000);
+$maxrows = (int) arraySafeVal($_GET,'rows', 1000);
+$maxrows = max($maxrows,  1000);
+$maxrows = min($maxrows, 32000);
 
 echo <<<end
 <div id="transactions">
