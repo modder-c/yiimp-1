@@ -24,8 +24,7 @@ function BackendClearEarnings($coinid = NULL)
 
 		if ($coin->symbol === 'DOGM') {  
 			$user = getdbo('db_accountsdogm', $earning->userid);  
-		} else { 
-		if ($coin->symbol === 'DOGE') {  
+		} elseif ($coin->symbol === 'DOGE') {  
 			$user = getdbo('db_accountsdoge', $earning->userid);  
 		} else {  
 			$user = getdbo('db_accounts', $earning->userid);  
