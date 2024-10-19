@@ -5,16 +5,50 @@ function BackendPayments()
 	// attempt to increase max execution time limit for the cron job
 	set_time_limit(300);
 
-	$list = getdbolist('db_coins', "enable and id in (select distinct coinid from accounts)");
-	foreach($list as $coin)
-		BackendCoinPayments($coin);
-
-	dborun("update accounts set balance=0 where coinid=0");
+       // Retrieve all enabled coins  
+       $coins = getdbolist('db_coins', "enable");  
+  
+       // Process coins based on their symbol  
+       foreach ($coins as $coin) {  
+        if ($coin->symbol === 'DOGM') {  
+            // For DOGM coins, process accountsdogm table  
+            $list = getdbolist('db_coins', "enable and id in (select distinct coinid from accountsdogm)");  
+            foreach ($list as $dogmCoin) {  
+                BackendCoinPayments($dogmCoin);  
+            }  
+            dborun("update accountsdogm set balance=0 where coinid=0"); 
+	} elseif ($coin->symbol === 'DOGE') {  
+            // For DOGE coins, process accountsdogm table  
+            $list = getdbolist('db_coins', "enable and id in (select distinct coinid from accountsdogm)");  
+            foreach ($list as $dogeCoin) {  
+                BackendCoinPayments($dogeCoin);  
+            }  
+            dborun("update accountsdoge set balance=0 where coinid=0");	
+        } else {  
+            // For other coins, process accounts table  
+            $list = getdbolist('db_coins', "enable and id in (select distinct coinid from accounts)");  
+            foreach ($list as $otherCoin) {  
+                BackendCoinPayments($otherCoin);  
+            }  
+            dborun("update accounts set balance=0 where coinid=0");  
+        }  
+    }  
+  
+    // Note: This logic assumes that you want to process all enabled coins,  
+    // and that the 'symbol' field in db_coins table uniquely identifies the coin type.  
+    // If this is not the case, you may need to adjust the logic accordingly.  
 }
 
-function BackendUserCancelFailedPayment($userid)
+function BackendUserCancelFailedPayment($userid, $coin)
 {
-	$user = getdbo('db_accounts', intval($userid));
+        if ($coin->symbol === 'DOGM') {
+	$user = getdbo('db_accountsdogm', intval($userid));
+        } elseif ($coin->symbol === 'DOGE') {
+	$user = getdbo('db_accountsdoge', intval($userid));
+        } else {   
+        $user = getdbo('db_accounts', intval($userid));
+        } 
+	
 	if(!$user) return false;
 
 	$amount_failed = 0.0;
@@ -51,7 +85,13 @@ function BackendCoinPayments($coin)
 		if($coin->symbol == 'DCR') $min_payout = 0.01005;
 	}
 
-	$users = getdbolist('db_accounts', "balance>$min_payout AND coinid={$coin->id} ORDER BY balance DESC");
+	if ($coin->symbol === 'DOGM') {
+	$users = getdbolist('db_accountsdogm', "balance>$min_payout AND coinid={$coin->id} ORDER BY balance DESC");
+        } elseif ($coin->symbol === 'DOGE') {
+	$users = getdbolist('db_accountsdoge', "balance>$min_payout AND coinid={$coin->id} ORDER BY balance DESC");
+        } else {   
+        $users = getdbolist('db_accounts', "balance>$min_payout AND coinid={$coin->id} ORDER BY balance DESC");
+        } 
 
 	// todo: enhance/detect payout_max from normal sendmany error
 	if($coin->symbol == 'BOD' || $coin->symbol == 'DIME' || $coin->symbol == 'BTCRY' || !empty($coin->payout_max))
@@ -166,8 +206,15 @@ function BackendCoinPayments($coin)
 
 	$payouts = array();
 	foreach($users as $user)
-	{
-		$user = getdbo('db_accounts', $user->id);
+	{   
+                if ($coin->symbol === 'DOGM') {
+		$user = getdbo('db_accountsdogm', $user->id);
+                } elseif ($coin->symbol === 'DOGE') {
+		$user = getdbo('db_accountsdoge', $user->id);
+                } else {
+                $user = getdbo('db_accounts', $user->id);
+                }
+		
 		if(!$user) continue;
 		if(!isset($addresses[$user->username])) continue;
 
