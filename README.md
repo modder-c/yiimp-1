@@ -24,8 +24,21 @@ USE yiimpfrontend;
 ```
 SHOW TABLES;
 ```
+#Create a new table with the same structure as the accounts table (assuming the new table is named accountsdogm):
+```
+CREATE TABLE accountsdogm LIKE accounts;
+```
+#For example: Enter the AUXPOW coin address of the miner user in the accountsdogm table, where the value of the coinid field is 1426 and the value of the username field is D9U6r6eZaxJ4iDWipuHy4ws7pzKnd797D7
+#Please enter the data according to the actual situation of your mining pool！
+```
+INSERT INTO accountsdogm (coinid, username) VALUES (1426, 'D9U6r6eZaxJ4iDWipuHy4ws7pzKnd797D7');
+```
+#Query all data stored in the accountsdogm table
+```
+SELECT * FROM accountsdogm;
+```
 
-
+***********************************
 #yiimp - yaamp fork
 
 WARNINGS
