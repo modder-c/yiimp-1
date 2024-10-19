@@ -22,10 +22,9 @@ function BackendBlockNew($coin, $db_block)
 
                 // If the coin symbol is 'DOGM', retrieve the user from the 'db_accountsdogm' table
                 if ($coin->symbol === 'DOGM') {         
-                $user = getdbo('db_accountsdogm', $item['userid']);  
-                } else {  
+                $user = getdbo('db_accountsdogm', $item['userid']);   
                 // If the coin symbol is 'DOGE', retrieve the user from the 'db_accountsdoge' table
-                if ($coin->symbol === 'DOGE') {  
+                } elseif ($coin->symbol === 'DOGE') {  
                 $user = getdbo('db_accountsdoge', $item['userid']);  
                 } else { 
                 // Otherwise, retrieve the user from the 'db_accounts' table  
