@@ -4,10 +4,8 @@ function BackendClearEarnings($coinid = NULL)
 {
 //	debuglog(__FUNCTION__);
 
-	if (YAAMP_ALLOW_EXCHANGE)
-		$delay = time() - (int) YAAMP_PAYMENTS_FREQ;
-	else
-		$delay = time() - (YAAMP_PAYMENTS_FREQ / 2);
+	$delay = time() - (int) YAAMP_CLEARS_DELAY; 
+
 	$total_cleared = 0.0;
 
 	$sqlFilter = $coinid ? " AND coinid=".intval($coinid) : '';
