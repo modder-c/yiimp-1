@@ -28,29 +28,25 @@ function BackendClearEarnings($coinid = NULL)
 			$user = getdbo('db_accounts', $earning->userid);  
 		}  
 
-		if(!$user)
-		{
-			$earning->delete();
-			continue;
-		}
-			
-		$earning->status = 2;		// cleared
-		$earning->price = $coin->price;
-		$earning->save();
-
-		$value = yaamp_convert_amount_user($coin, $earning->amount, $user);
-
-		if($user->coinid == 6 && !YAAMP_ALLOW_EXCHANGE)
-			continue;
-
-		$user->balance += $value;
-		$user->save();
-
-		if($user->coinid == 6)
-			$total_cleared += $value;
-	}
-
-	if($total_cleared>0)
-	 	debuglog("total cleared from mining $total_cleared BTC");
+		if(!$user)  
+		{  
+			$earning->delete();  
+			continue;  
+		}  
+  
+		$earning->status = 2;		// cleared  
+		$earning->save();  
+                
+                $value = $earning->amount; 
+  
+		$user->balance += $value;  
+		$user->save();  
+  
+		if($user->coinid == 6)  
+		$total_cleared += $value;  
+	}  
+  
+	if($total_cleared>0)  
+		debuglog("total cleared from mining $total_cleared BTC");  
 }
 
