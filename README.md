@@ -1,4 +1,4 @@
-#How to install Yiimp? Use the Yiimp installation script.
+l#How to install Yiimp? Use the Yiimp installation script.
 
 - https://github.com/msy2008/yiimp_install_scrypt
 
