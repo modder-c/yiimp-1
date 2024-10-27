@@ -1,6 +1,6 @@
 <?php
 
-class db_accountsdogm extends CActiveRecord
+class db_accountsbtco extends CActiveRecord
 {
 	public static function model($className=__CLASS__)
 	{
@@ -9,7 +9,7 @@ class db_accountsdogm extends CActiveRecord
 
 	public function tableName()
 	{
-		return 'accountsdoge';
+		return 'accountsbtco';
 	}
 
 	public function rules()
